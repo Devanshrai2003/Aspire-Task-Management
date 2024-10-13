@@ -50,7 +50,7 @@
             const username = document.querySelector("#signup-username").value;
             const password = document.querySelector("#signup-password").value;
 
-            const response = await axios.post("http://localhost:3000/user/signup",{
+            const response = await axios.post("https://aspire-task-management.onrender.com/user/signup",{
                 email: email,
                 username: username,
                 password: password
