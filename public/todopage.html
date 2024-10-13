@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/todopage.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-logo">
+            <img src="/logo.png" alt="Aspire Logo">
+            <p>Aspire</p>
+        </div>
+        <div class="nav-buttons">
+                <button class="nav-button" id="github"> <i class="fa-brands fa-github"></i> GitHub</button>
+                <button class="nav-button" id="x"> <i class="fa-brands fa-x-twitter"></i> </button>
+                <button class="nav-button" id="logout"> Log Out </button>
+        </div>
+    </div>
+
+
+
+    <div class="main-content">
+        <div class="todo-space">
+
+            <div class="container">
+                <div class="info-bar">
+                    <p> <i class="fa-solid fa-clipboard-list"></i> Not Started </p>
+                    <button class="add-todo"> <i class="fa-solid fa-circle-plus"></i> </button>
+                </div>
+                <div class="todobox" id="not-started">
+                    <div class="instructions not-started">
+                        <p>No Tasks To Display. Create a task using Add Todo <i class="fa-solid fa-circle-plus"></i> Button</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="info-bar">
+                    <p> <i class="fa-solid fa-hourglass-half"></i> In Progress </p>
+                    <button class="add-todo"> <i class="fa-solid fa-circle-plus"></i> </button>
+                </div>
+                <div class="todobox" id="in-progress">
+                    <div class="instructions in-progress">
+                        <p>No Tasks In Progress. Create a task using Add Todo <i class="fa-solid fa-circle-plus"></i> Button</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="info-bar">
+                    <p> <i class="fa-solid fa-list-check"></i> Completed </p>
+                    <button class="add-todo"> <i class="fa-solid fa-circle-plus"></i> </button>
+                </div>
+                <div class="todobox" id="completed">
+                    <div class="instructions completed">
+                        <p>No Tasks Completed. Create a task using Add Todo <i class="fa-solid fa-circle-plus"></i> Button</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="overlay-container">
+        <div class="popup-box">
+            <div class="popup-content">
+                <form>
+                    <p>Add Task</p>
+                    <div class="task-info">
+                        <input type="text" placeholder="Task Title" id="task-title" required>
+                        <textarea placeholder="Description(optional)" id="task-content"></textarea>
+                        <select id="task-priority" required>
+                            <option value="" disabled selected> Set Priority </option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+            
+                        <select id="task-status" required>
+                            <option value="" disabled selected> Select Status </option>
+                            <option value="not-started">Not Started</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+
+                        <input type="date" id="task-deadline" required>
+            
+                        <input type="text" placeholder="Category" list="category-list" id="task-category" required>
+                        <datalist id="category-list">
+                            <option value="Work"></option>
+                            <option value="Personal"></option>
+                        </datalist>
+                    </div>
+                </form>
+                <button class="task-submit-button">Submit</button>
+                <button class="task-cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    <script src="/todopage.js"></script>
+</body>
+</html>

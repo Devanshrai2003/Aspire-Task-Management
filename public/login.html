@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/signup-login.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-logo">
+            <img src="/logo.png" alt="Aspire Logo">
+            <p>Aspire</p>
+        </div>
+        <button onclick="window.location.href = '/signup.html'" class="nav-button" id="signup">Sign Up</button>
+    </div>
+    <div class="main-content">
+        <div class="login-box">
+           <div class="login-section">
+             <h1> Log-In </h1>
+             <div class="username">
+                <label for="username">Enter your username:</label>
+                <input type="text" name="username" id="login-username" placeholder="Enter Username">
+             </div>
+             <div class="password">
+                <label for="password">Enter your password:</label>
+                <input type="text" name="password" id="login-password" placeholder="Enter Password">
+             </div>
+             <button class="login-button">Log In</button>
+           </div>
+        </div>
+        <div class="image-box">
+            
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    <script>
+        const loginButton = document.querySelector(".login-button");
+    
+        loginButton.addEventListener("click", async function() {
+            const username = document.querySelector("#login-username").value;
+            const password = document.querySelector("#login-password").value;
+    
+            try {
+                const response = await axios.post("http://localhost:3000/user/login", {
+                    username: username,
+                    password: password
+                });
+    
+
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("userId", response.data.userId);
+    
+                alert("You are now logged in");
+                window.location.href = "/todopage.html";
+            } catch (error) {
+                console.error(error);
+                alert("Failed to log in. Please check your credentials.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #EAEAEA;
+    background-color: #252A34;
+}
+
+.nav-button{
+    margin-right: 4vh;
+    padding: 5px 15px;
+    font-size: 1.125rem;
+    border: 1.5px solid transparent;
+    border-radius: 25px;
+    color: #EAEAEA;
+    background-color: #FF2E63;
+    transition: 0.1s ease-out;
+}
+
+.nav-button:hover{
+    border: 1.5px solid #EAEAEA;
+}
+
+.nav-logo{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4vh;
+
+    p{
+        margin-left: 8px;
+        font-family: "Klarissa";
+        font-size: 3rem;
+        color: #EAEAEA;
+    }
+
+    img{
+        height: 90%;
+        width: 60px;
+        border-radius: 50%;
+    }
+}
+
+.main-content{
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    height: 83.3vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.signup-box, .login-box{
+    margin: 10vh;
+    height: 80%;
+    width: 35%;
+    border: 2px solid #B0B0B0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 3vh;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-section, .login-section{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 90%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1;
+}
+
+.email, .username, .password{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    input{
+        height: 2vh;
+        padding: 10px;
+        background-color: #d1cece;
+        border: none;
+        border-radius: 5px;
+        margin-top: 1vh;
+       
+    }
+
+    label{
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+}
+
+.signup-button, .login-button{
+    margin-top: 3vh;
+    height: 5vh;
+    background-color: #08D9D6;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: 0.1s ease;
+}
+
+.signup-button:hover, .login-button:hover{
+    background-color: #049997;
+}
+
+.image-box{
+    margin: 5vh;
+    height: 90%;
+    width: 65%;
+    border: 2px solid red;
+    background-image:url("/images/logo.png");
+    background-size: contain;
+}
+
+.footer{
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px solid #EAEAEA;
+    background-color: #252A34;
+}

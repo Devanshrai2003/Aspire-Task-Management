@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/signup-login.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-logo">
+            <img src="/logo.png" alt="Aspire Logo">
+            <p>Aspire</p>
+        </div>
+        <button onclick="window.location.href = '/login.html'" class="nav-button" id="login">Log In</button>
+    </div>
+    <div class="main-content">
+        <div class="signup-box">
+           <div class="signup-section">
+             <h1> Sign-Up </h1>
+             <div class="email">
+                <label for="email">Enter your email address:</label>
+                <input type="email" name="email" id="signup-email" placeholder="Enter Email">
+             </div>
+             <div class="username">
+                <label for="username">Create a username:</label>
+                <input type="text" name="username" id="signup-username" placeholder="Create Username">
+             </div>
+             <div class="password">
+                <label for="password">Create a password:</label>
+                <input type="text" name="password" id="signup-password" placeholder="Create Password">
+             </div>
+             <button class="signup-button">Sign Up</button>
+           </div>
+        </div>
+        <div class="image-box">
+            
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    <script>
+        const signupButton = document.querySelector(".signup-button");
+
+        signupButton.addEventListener("click", async function(){
+            
+            const email = document.querySelector("#signup-email").value;
+            const username = document.querySelector("#signup-username").value;
+            const password = document.querySelector("#signup-password").value;
+
+            const response = await axios.post("http://localhost:3000/user/signup",{
+                email: email,
+                username: username,
+                password: password
+            })
+
+            alert("you are signed up")
+            window.location.href = "/login.html"
+        })
+    </script>
+</body>
+</html>
