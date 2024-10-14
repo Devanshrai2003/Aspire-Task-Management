@@ -38,9 +38,6 @@ userRouter.post("/signup", async function(req, res) {
     res.json({
         message: "You have successfully signed up"
     })
-
-    res.sendFile(path.join(__dirname, "public/homepage.html"));
-
 })
 
 
