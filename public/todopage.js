@@ -40,7 +40,7 @@ taskSubmitBtn.addEventListener("click", async function(){
 
  try{
 
-    const response =  await axios.post("http://localhost:3000/todos/add-todo", taskData)
+    const response =  await axios.post("https://aspire-task-management.onrender.com/todos/add-todo", taskData)
     fetchTodos()
 
  }catch(error) {
@@ -54,7 +54,7 @@ window.onload = function() {
 
 async function fetchTodos() {
     try {
-        const response = await axios.get('http://localhost:3000/todos/all');
+        const response = await axios.get('https://aspire-task-management.onrender.com/todos/all');
         const tasks = response.data.tasks;
 
         displayTodos(tasks);

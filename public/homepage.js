@@ -28,7 +28,7 @@ getStartedBtn.addEventListener("click", async function() {
     }
 
     try {
-        await axios.get("http://localhost:3000/todos/todo-page", {
+        await axios.get("https://aspire-task-management.onrender.com/todos/todo-page", {
             headers: {
                 token: token
             }
