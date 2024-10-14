@@ -12,8 +12,13 @@ todosRouter.get("/todo-page",authenticator, function(req,res){
 })
 
 todosRouter.get("/all", async function(req, res){
+
+    const userId = req.userId;
+
     try{
-        const tasks = await TodoModel.find()
+        const tasks = await TodoModel.find({
+            userId: userId 
+        })
         res.json({
             success: true,
             tasks: tasks
@@ -21,14 +26,17 @@ todosRouter.get("/all", async function(req, res){
 
     }catch(error){
         console.error(error)
+        res.status(500).json({ message: "Failed to load tasks" });
     }
 
 })
 
 todosRouter.post("/add-todo", async function(req, res){
 
+    const userId = req.userId;
+
     try{
-        const{title, userId, content, priority, status, deadline, category} = req.body
+        const{title, content, priority, status, deadline, category} = req.body
 
         if (!title || !priority || !status || !deadline || !category) {
             return res.status(400).json({ 

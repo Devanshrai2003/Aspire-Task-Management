@@ -53,8 +53,15 @@ window.onload = function() {
 };
 
 async function fetchTodos() {
+
+    const token = localStorage.getItem("token");
+
     try {
-        const response = await axios.get('https://aspire-task-management.onrender.com/todos/all');
+        const response = await axios.get('https://aspire-task-management.onrender.com/todos/all',{
+            headers: {
+                token: token
+            }
+        });
         const tasks = response.data.tasks;
 
         displayTodos(tasks);
