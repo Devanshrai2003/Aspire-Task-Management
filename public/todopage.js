@@ -23,29 +23,32 @@ taskCancelBtn.addEventListener("click", function(){
 
 taskSubmitBtn.addEventListener("click", async function(){
 
-    const userId = localStorage.getItem("userId");
+    const overlay = document.querySelector(".overlay-container");
+    overlay.classList.toggle("show");
 
-    const overlay = document.querySelector(".overlay-container")
-    overlay.classList.toggle("show")
+    const taskData = {
+        title: document.querySelector("#task-title").value,
+        content: document.querySelector("#task-content").value,
+        priority: document.querySelector("#task-priority").value,
+        status: document.querySelector("#task-status").value,
+        deadline: document.querySelector("#task-deadline").value,
+        category: document.querySelector("#task-category").value,
+    };
 
- const taskData = {
- userId: userId,
- title : document.querySelector("#task-title").value,
- content : document.querySelector("#task-content").value,
- priority : document.querySelector("#task-priority").value,
- status : document.querySelector("#task-status").value,
- deadline : document.querySelector("#task-deadline").value,
- category : document.querySelector("#task-category").value,
- };
+    const token = localStorage.getItem("token");
 
- try{
+    try {
+        const response = await axios.post("https://aspire-task-management.onrender.com/todos/add-todo", taskData, {
+            headers: {
+                token: token
+            }
+        });
 
-    const response =  await axios.post("https://aspire-task-management.onrender.com/todos/add-todo", taskData)
-    fetchTodos()
+        fetchTodos();
 
- }catch(error) {
-    console.error(error)
- }
+    } catch (error) {
+        console.error("Error adding task:", error);
+    }
 });
 
 window.onload = function() {
@@ -68,6 +71,15 @@ async function fetchTodos() {
     } catch (error) {
         console.error(error);
         alert("Failed to load tasks");
+    }
+}
+
+function checkAndHideInstructions(container) {
+    const instructions = container.previousElementSibling;
+    if (container.childElementCount > 0 && instructions) {
+        instructions.style.display = "none";
+    } else {
+        instructions.style.display = "block";
     }
 }
 
@@ -146,16 +158,19 @@ function displayTodos(tasks){
         if (task.status === "not-started") {
 
             notStartedContainer.appendChild(taskBox);
+            checkAndHideInstructions(notStartedContainer);
             statusBox.style.backgroundColor = "#870101"
             
         } else if (task.status === "in-progress") {
 
             inProgressContainer.appendChild(taskBox);
+            checkAndHideInstructions(inProgressContainer);
             statusBox.style.backgroundColor = "#002745"
 
         } else if (task.status === "completed") {
 
             completedContainer.appendChild(taskBox);
+            checkAndHideInstructions(inProgressContainer);
             statusBox.style.backgroundColor = "#075714"
 
         }

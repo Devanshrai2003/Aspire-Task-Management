@@ -11,7 +11,7 @@ todosRouter.get("/todo-page",authenticator, function(req,res){
     })
 })
 
-todosRouter.get("/all", async function(req, res){
+todosRouter.get("/all", authenticator, async function(req, res){
 
     const userId = req.userId;
 
@@ -31,7 +31,7 @@ todosRouter.get("/all", async function(req, res){
 
 })
 
-todosRouter.post("/add-todo", async function(req, res){
+todosRouter.post("/add-todo", authenticator, async function(req, res){
 
     const userId = req.userId;
 
@@ -63,6 +63,10 @@ todosRouter.post("/add-todo", async function(req, res){
         console.error(error)
     }
 
+})
+
+todosRouter.post("/edit-todo", authenticator, async function(req, res){
+    
 })
 
 module.exports = {

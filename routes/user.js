@@ -70,7 +70,7 @@ userRouter.post("/login", async function(req, res) {
         }, JWT_SECRET);
 
         res.json({
-            token,
+            token: token,
             userId: user._id,
             message: "Login successful",
         });
