@@ -17,10 +17,20 @@
     padding: 5px 15px;
     font-size: 1.125rem;
     border: 1.5px solid transparent;
+    cursor: pointer;
     border-radius: 25px;
     color: #EAEAEA;
     background-color: #FF2E63;
     transition: 0.1s ease-out;
+}
+
+#home{
+    background-color: #EAEAEA;
+    color: #252A34;
+}
+
+#home:hover{
+    border: 1.5px solid #252A34;
 }
 
 .nav-button:hover{
@@ -116,10 +126,10 @@
 
 .image-box{
     margin: 5vh;
-    height: 90%;
-    width: 65%;
-    border: 2px solid red;
-    background-image:url("/images/logo.png");
+    height: 65%;
+    width: 60%;
+    border: 1.5px solid #EAEAEA;
+    background-image:url("/preview.png");
     background-size: contain;
 }
 
