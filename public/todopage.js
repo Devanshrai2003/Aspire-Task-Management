@@ -1,9 +1,17 @@
-
 const addToDoBtn = document.querySelector(".add-todo");
 const logOutBtn = document.querySelector("#logout");
 const taskSubmitBtn = document.querySelector(".task-submit-button");
 const taskCancelBtn = document.querySelector(".task-cancel-button");
+const gitHubBtn = document.querySelector("#github");
+const xBtn = document.querySelector("#x");
 
+gitHubBtn.addEventListener("click", function(){
+    window.open('https://github.com/Devanshrai2003', '_blank')
+})
+
+xBtn.addEventListener("click", function(){
+    window.open('https://x.com/devanshrai2003', '_blank')
+})
 
 logOutBtn.addEventListener("click", function(){
     localStorage.removeItem("token")
@@ -37,6 +45,25 @@ taskSubmitBtn.addEventListener("click", async function(){
 
     const token = localStorage.getItem("token");
 
+    const taskId = taskSubmitBtn.getAttribute("data-task-id");
+
+    if(taskId){
+        try{
+            const response = await axios.put(`https://aspire-task-management.onrender.com/todos/edit-todo/${encodeURIComponent(taskId)}`, taskData, {
+                headers: {
+                    token: token
+                }
+            });
+
+            fetchTodos()
+
+    }catch(error){
+        console.error("Error editing task:", error);
+    }
+
+    taskSubmitBtn.removeAttribute("data-task-id")
+
+}else{
     try {
         const response = await axios.post("https://aspire-task-management.onrender.com/todos/add-todo", taskData, {
             headers: {
@@ -49,6 +76,8 @@ taskSubmitBtn.addEventListener("click", async function(){
     } catch (error) {
         console.error("Error adding task:", error);
     }
+}
+    clearTaskForm();
 });
 
 window.onload = function() {
@@ -81,6 +110,50 @@ function checkAndHideInstructions(container) {
     } else {
         instructions.style.display = "block";
     }
+}
+
+function editTask(task){
+
+    const overlay = document.querySelector(".overlay-container");
+    overlay.classList.toggle("show");
+
+    document.querySelector("#task-title").value = task.title;
+    document.querySelector("#task-content").value = task.content;
+    document.querySelector("#task-priority").value = task.priority;
+    document.querySelector("#task-status").value = task.status;
+    document.querySelector("#task-deadline").value = new Date(task.deadline).toISOString().split('T')[0]; // format the date correctly
+    document.querySelector("#task-category").value = task.category;
+
+    taskSubmitBtn.setAttribute("data-task-id", task._id);
+}
+
+async function deleteTask(taskId) {
+    
+    const token = localStorage.getItem("token")
+
+    try{
+        const response = await axios.delete(`https://aspire-task-management.onrender.com/todos/delete-todo/${taskId}`, {
+            headers: {
+                token: token
+            }
+        })
+        if (response.status === 200) {
+            fetchTodos();
+        }
+
+    }catch(error){
+        console.error("Error deleting task:", error);
+    }
+}
+
+function clearTaskForm() {
+    document.querySelector("#task-title").value = "";
+    document.querySelector("#task-content").value = "";
+    document.querySelector("#task-priority").value = "";
+    document.querySelector("#task-status").value = "";
+    document.querySelector("#task-deadline").value = "";
+    document.querySelector("#task-category").value = "";
+    taskSubmitBtn.removeAttribute("data-task-id");
 }
 
 function displayTodos(tasks){
@@ -132,10 +205,12 @@ function displayTodos(tasks){
         buttonBox.classList.add("button-box");
 
         const editButton = document.createElement("button")
+        editButton.addEventListener("click", () => editTask(task))
         editButton.classList.add("task-button")
         editButton.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`
 
         const deleteButton = document.createElement("button")
+        deleteButton.addEventListener("click", () => deleteTask(task._id))
         deleteButton.classList.add("task-button")
         deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`
 
