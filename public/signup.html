@@ -69,10 +69,10 @@
             
             const response = await axios.post("https://aspire-task-management.onrender.com/user/login-as-guest");
             
-            alert("You are now logged in as a guest. Your tasks will not be saved.");
             localStorage.setItem("token", response.data.token);
-            localStorage.setItem("isGuest", "true");
+            localStorage.setItem("isGuest", true );
             
+            alert("You are now logged in as a guest. Your tasks will not be saved.");
             window.location.href = "/todopage.html"; 
         })
     </script>
