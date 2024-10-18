@@ -106,5 +106,26 @@
     <div class="footer">
     </div>
     <script src="/todopage.js"></script>
+    <script>
+        window.addEventListener("beforeunload", async function() {
+                const token = localStorage.getItem("token");
+                const isGuest = localStorage.getItem("isGuest");
+
+                if(token && isGuest){
+                    try{
+                        await axios.delete("https://aspire-task-management.onrender.com/user/delete-guest-tasks", {
+                            headers: {
+                                token: token
+                            }
+                        });
+                        
+                        localStorage.removeItem("token")
+                        localStorage.removeItem("isGuest");
+                    }catch(error){
+                        console.error("Failed to delete guest tasks:", error);
+                    }
+                }
+            });
+    </script>
 </body>
 </html>
