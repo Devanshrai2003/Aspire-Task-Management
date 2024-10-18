@@ -32,6 +32,7 @@
                 <input type="password" name="password" id="login-password" placeholder="Enter Password">
              </div>
              <button class="login-button">Log In</button>
+             <button class="login-as-guest-button">Log In As Guest</button>
            </div>
         </div>
         <div class="image-box">
@@ -42,6 +43,7 @@
     </div>
     <script>
         const loginButton = document.querySelector(".login-button");
+        const loginAsGuestButton = document.querySelector(".login-as-guest-button")
     
         loginButton.addEventListener("click", async function() {
             const username = document.querySelector("#login-username").value;
@@ -63,6 +65,16 @@
                 alert("Failed to log in. Please check your credentials.");
             }
         });
+
+        loginAsGuestButton.addEventListener("click", async function(){
+            
+            const response = await axios.post("https://aspire-task-management.onrender.com/user/login-as-guest");
+            
+            alert("You are now logged in as a guest");
+            localStorage.setItem("token", response.data.token);
+
+            window.location.href = "/todopage.html"; 
+        })
     </script>
 </body>
 </html>
