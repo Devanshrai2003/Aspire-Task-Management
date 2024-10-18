@@ -113,11 +113,32 @@
     height: 5vh;
     background-color: #08D9D6;
     border: none;
+    cursor: pointer;
     border-radius: 6px;
     color: white;
     font-size: 1.25rem;
     font-weight: 600;
     transition: 0.1s ease;
+}
+
+.login-as-guest-button{
+    height: 5vh;
+    background-color: black;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: 0.1s ease;
+}
+
+.login-as-guest-button:hover{
+    background-color: rgb(39, 38, 38);
+}
+
+.login-as-guest-button:active{
+    background-color: rgb(56, 56, 56);
 }
 
 .signup-button:hover, .login-button:hover{

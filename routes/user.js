@@ -40,6 +40,31 @@ userRouter.post("/signup", async function(req, res) {
     })
 })
 
+userRouter.post("/login-as-guest", async function(req, res) {
+    try {
+        const guestUser = await UserModel.findOne({ username: "guest" });
+
+        if(!guestUser){
+            return res.status(404).json({
+                 message: "Guest user not found" 
+                });
+        }
+
+        const token = jwt.sign({
+            id: guestUser._id
+        }, JWT_SECRET);
+
+        res.json({
+            token: token,
+            userId: guestUser._id,
+            message: "Login successful",
+        });
+        
+    } catch (error) {
+        res.status(500).json({ message: "Guest login failed" });
+    }
+});
+
 
 // Match username and password and generate a token if password matches
 userRouter.post("/login", async function(req, res) {
