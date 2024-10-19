@@ -49,7 +49,6 @@ taskCancelBtn.addEventListener("click", function(){
 taskSubmitBtn.addEventListener("click", async function(){
 
     const overlay = document.querySelector(".overlay-container");
-    overlay.classList.toggle("show");
 
     const taskData = {
         title: document.querySelector("#task-title").value,
@@ -64,6 +63,8 @@ taskSubmitBtn.addEventListener("click", async function(){
         alert("Please fill out all fields before submitting the task.");
         return;
     }
+
+    overlay.classList.toggle("show");
 
     const token = localStorage.getItem("token");
 
