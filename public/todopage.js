@@ -60,7 +60,7 @@ taskSubmitBtn.addEventListener("click", async function(){
         category: document.querySelector("#task-category").value,
     };
 
-    if (!taskData.title || !taskData.content || !taskData.priority || !taskData.status || !taskData.deadline || !taskData.category) {
+    if (!taskData.title || !taskData.priority || !taskData.status || !taskData.deadline || !taskData.category) {
         alert("Please fill out all fields before submitting the task.");
         return;
     }
