@@ -95,7 +95,7 @@ todosRouter.delete("/delete-todo/:id", authenticator, async function(req, res){
 
 todosRouter.delete("/delete-guest-tasks", authenticator, async (req, res) => {
     try {
-        const guestUser = await User.findOne({ username: "guest" });
+        const guestUser = await UserModel.findOne({ username: "guest" });
         
         if (!guestUser) {
             return res.status(404).json({ message: "Guest user not found" });
@@ -105,7 +105,10 @@ todosRouter.delete("/delete-guest-tasks", authenticator, async (req, res) => {
         
         res.status(200).json({ message: "Guest tasks deleted successfully" });
     } catch (error) {
-        res.status(500).json({ message: "Failed to delete guest tasks" });
+        res.status(500).json({
+             message: "Failed to delete guest tasks",
+             error: error
+        });
     }
 });
 
