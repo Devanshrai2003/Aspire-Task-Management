@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aspire</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="/signup-login.css">
@@ -71,9 +71,9 @@
             const response = await axios.post("https://aspire-task-management.onrender.com/user/login-as-guest");
             
             localStorage.setItem("token", response.data.token);
-            localStorage.setItem("isGuest", true );
+            localStorage.setItem("isGuest", "true" );
             
-            alert("You are now logged in as a guest. Your tasks will not be saved.");
+            alert("You are now logged in as a guest. Your tasks will not be saved on logout.");
             window.location.href = "/todopage.html"; 
         })
     </script>

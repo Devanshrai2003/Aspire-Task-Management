@@ -1,3 +1,5 @@
+const { default: axios } = require("axios");
+
 const addToDoBtn = document.querySelector(".add-todo");
 const logOutBtn = document.querySelector("#logout");
 const taskSubmitBtn = document.querySelector(".task-submit-button");
@@ -13,9 +15,17 @@ xBtn.addEventListener("click", function(){
     window.open('https://x.com/devanshrai2003', '_blank')
 })
 
-logOutBtn.addEventListener("click", function(){
+logOutBtn.addEventListener("click",async function(){
+    const isGuest = localStorage.getItem("isGuest")
+
+    if(isGuest === "true"){
+        await axios.delete("https://aspire-task-management.onrender.com/user/delete-guest-tasks")
+    }
+
     localStorage.removeItem("token")
     localStorage.removeItem("userId")
+    localStorage.removeItem("isGuest")
+
     window.location.href = "/homepage.html"
 })
 
