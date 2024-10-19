@@ -15,9 +15,18 @@ xBtn.addEventListener("click", function(){
 
 logOutBtn.addEventListener("click",async function(){
     const isGuest = localStorage.getItem("isGuest")
+    const token = localStorage.getItem("token")
 
     if(isGuest === "true"){
-        await axios.delete("https://aspire-task-management.onrender.com/todos/delete-guest-tasks")
+        try{
+            await axios.delete("https://aspire-task-management.onrender.com/todos/delete-guest-tasks", {
+                headers: {
+                    token: token
+                }
+            })
+        }catch(error){
+            console.error(error)
+        }
     }
 
     localStorage.removeItem("token")
