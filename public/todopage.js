@@ -1,5 +1,3 @@
-const { default: axios } = require("axios");
-
 const addToDoBtn = document.querySelector(".add-todo");
 const logOutBtn = document.querySelector("#logout");
 const taskSubmitBtn = document.querySelector(".task-submit-button");
