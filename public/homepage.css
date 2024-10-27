@@ -38,12 +38,20 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
 }
 
 .nav-signup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-left: 1px solid #EAEAEA;
     padding-left: 4vh;
+}
+
+.nav-misc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-button{
@@ -64,12 +72,25 @@
 #signup{
     border: 1.5px solid #EAEAEA;
     background-color: #EAEAEA;
+    cursor: pointer;
     color: #252A34;
 }
 
 #signup:hover{
     background-color: #FF2E63;
     color: white;
+}
+
+#login{
+    cursor: pointer;
+}
+
+#github{
+    cursor: pointer;
+}
+
+#x{
+    cursor: pointer;
 }
 
 #login:hover{
@@ -105,6 +126,7 @@
     border-radius: 10px;
     box-shadow: 0 8px 0 #72142b ;
     background-color: #FF2E63;
+    cursor: pointer;
     color: white;
     transition: 0.1s ease;
 }
@@ -128,7 +150,6 @@
 .content-box{
     display: flex;
     justify-content: center;
-    align-items: centers;
 }
 
 .footer{
@@ -172,4 +193,109 @@
     margin-right: 4vh;
     font-size: 1.5rem;
     color: #EAEAEA;
+}
+
+@media screen and (max-width: 830px){
+
+    .navbar{
+        height: 12vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        border-bottom: 3px solid #EAEAEA;
+        background-color: #252A34;
+    }
+
+    .nav-buttons{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .nav-signup, .nav-misc{
+        width: 50vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .nav-logo{
+        margin-left: 0;
+    }
+
+    .nav-button{
+        margin-left: 0;
+    }
+
+    .hero-section{
+        font-size: 1.8rem;
+
+        p{
+            font-size: 1rem;
+        }
+    }
+
+    .footer{
+        height: 14vh;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .footer-logo{
+    
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-left: 0;
+    
+        p{
+            margin-left: 8px;
+            font-size: 2rem;
+        }
+    
+        img{
+            height: 80%;
+        }
+    }
+    
+    .footer-icons{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100vw;
+        margin-right: -4vh;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    
+    .navbar{
+        height: 13vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        border-bottom: 3px solid #EAEAEA;
+        background-color: #252A34;
+    }
+
+    .nav-button{
+        padding: 5px 5px;
+        font-size: 1rem;
+        border: 1.5px solid transparent;
+        border-radius: 25px;
+        color: #EAEAEA;
+        background-color: transparent;
+        transition: 0.1s ease-out;
+    }
+
+    .nav-misc{
+        margin-left: 2vh;
+    }
+
+    .hero-section{
+        font-size: 1.5rem;
+    }
 }
