@@ -1,81 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="/signup-login.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+      integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="/signup-login.css" />
+  </head>
+  <body>
     <div class="navbar">
+      <a
+        style="text-decoration-line: none; cursor: pointer"
+        href="https://aspire-task-management.onrender.com/homepage.html"
+      >
         <div class="nav-logo">
-            <img src="/logo.png" alt="Aspire Logo">
-            <p>Aspire</p>
+          <img src="/logo.png" alt="Aspire Logo" />
+          <p>Aspire</p>
         </div>
-        <div class="nav-buttons">
-            <button onclick="window.location.href = '/homepage.html'" class="nav-button" id="home"> Home </button>
-            <button onclick="window.location.href = '/signup.html'" class="nav-button" id="signup">Sign Up</button>
-        </div>
+      </a>
+      <div class="nav-buttons">
+        <button
+          onclick="window.location.href = '/homepage.html'"
+          class="nav-button"
+          id="home"
+        >
+          Home
+        </button>
+        <button
+          onclick="window.location.href = '/signup.html'"
+          class="nav-button"
+          id="signup"
+        >
+          Sign Up
+        </button>
+      </div>
     </div>
     <div class="main-content">
-        <div class="login-box">
-           <div class="login-section">
-             <h1> Log-In </h1>
-             <div class="username">
-                <label for="username">Enter your username:</label>
-                <input type="text" name="username" id="login-username" placeholder="Enter Username">
-             </div>
-             <div class="password">
-                <label for="password">Enter your password:</label>
-                <input type="password" name="password" id="login-password" placeholder="Enter Password">
-             </div>
-             <button class="login-button">Log In</button>
-             <button class="login-as-guest-button">Log In As Guest</button>
-           </div>
+      <div class="login-box">
+        <div class="login-section">
+          <h1>Log-In</h1>
+          <div class="username">
+            <label for="username">Enter your username:</label>
+            <input
+              type="text"
+              name="username"
+              id="login-username"
+              placeholder="Enter Username"
+            />
+          </div>
+          <div class="password">
+            <label for="password">Enter your password:</label>
+            <input
+              type="password"
+              name="password"
+              id="login-password"
+              placeholder="Enter Password"
+            />
+          </div>
+          <button class="login-button">Log In</button>
+          <button class="login-as-guest-button">Log In As Guest</button>
         </div>
-        <div class="image-box">
-            
-        </div>
+      </div>
+      <div class="image-box"></div>
     </div>
-    <div class="footer">
-    </div>
+    <div class="footer"></div>
     <script>
-        const loginButton = document.querySelector(".login-button");
-        const loginAsGuestButton = document.querySelector(".login-as-guest-button")
-    
-        loginButton.addEventListener("click", async function() {
-            const username = document.querySelector("#login-username").value;
-            const password = document.querySelector("#login-password").value;
-    
-            try {
-                const response = await axios.post("https://aspire-task-management.onrender.com/user/login", {
-                    username: username,
-                    password: password
-                });
-    
+      const loginButton = document.querySelector(".login-button");
+      const loginAsGuestButton = document.querySelector(
+        ".login-as-guest-button"
+      );
 
-                localStorage.setItem("token", response.data.token);
+      loginButton.addEventListener("click", async function () {
+        const username = document.querySelector("#login-username").value;
+        const password = document.querySelector("#login-password").value;
 
-                alert("You are now logged in");
-                window.location.href = "/todopage.html";
-            } catch (error) {
-                console.error(error);
-                alert("Failed to log in. Please check your credentials.");
+        try {
+          const response = await axios.post(
+            "https://aspire-task-management.onrender.com/user/login",
+            {
+              username: username,
+              password: password,
             }
-        });
+          );
 
-        loginAsGuestButton.addEventListener("click", async function(){
-            
-            const response = await axios.post("https://aspire-task-management.onrender.com/user/login-as-guest");
-            
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem("isGuest", "true" );
-            
-            alert("You are now logged in as a guest. Your tasks will not be saved on logout.");
-            window.location.href = "/todopage.html"; 
-        })
+          localStorage.setItem("token", response.data.token);
+
+          alert("You are now logged in");
+          window.location.href = "/todopage.html";
+        } catch (error) {
+          console.error(error);
+          alert("Failed to log in. Please check your credentials.");
+        }
+      });
+
+      loginAsGuestButton.addEventListener("click", async function () {
+        const response = await axios.post(
+          "https://aspire-task-management.onrender.com/user/login-as-guest"
+        );
+
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("isGuest", "true");
+
+        alert(
+          "You are now logged in as a guest. Your tasks will not be saved on logout."
+        );
+        window.location.href = "/todopage.html";
+      });
     </script>
-</body>
+  </body>
 </html>
