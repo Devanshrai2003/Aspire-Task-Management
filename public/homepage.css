@@ -273,6 +273,7 @@
 @media screen and (max-width: 550px) {
   .navbar {
     height: 32vh;
+    min-height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -323,7 +324,6 @@
     flex-direction: column;
     width: 20%;
     align-items: center;
-    border-right: 1px solid #eaeaea;
   }
 
   .nav-button {
