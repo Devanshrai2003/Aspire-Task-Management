@@ -292,7 +292,7 @@
     width: 50%;
     align-items: center;
     margin-left: 2vh;
-    margin-top: 4vh;
+/*     margin-top: 4vh; */
 
     p {
       margin-left: 8px;
@@ -313,16 +313,17 @@
     justify-content: center;
     width: 40vw;
     align-items: center;
-    margin-bottom: 5px;
+/*     margin-bottom: 5px; */
   }
 
   .nav-signup {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: stretch;
     padding: 0;
     border: none;
+    height: inherit;
   }
 
   .nav-misc {
@@ -335,7 +336,7 @@
 
   .nav-button {
     margin-right: 0;
-    margin-top: 2vh;
+/*     margin-top: 2vh; */
     padding: 8px 10px;
     font-size: 1.1rem;
     border: 1.5px solid transparent;
@@ -391,7 +392,7 @@
 
 @media screen and (max-width: 460px) {
   .hero-section {
-    font-size: 1.45rem;
+    font-size: 0.75rem;
     p {
       font-size: 0.85rem;
     }
@@ -399,6 +400,7 @@
 
   #login {
     border: 2px solid #eaeaea;
+    margin-top: 0;
   }
 }
 
