@@ -292,7 +292,7 @@
     width: 50%;
     align-items: center;
     margin-left: 2vh;
-/*     margin-top: 4vh; */
+    /*     margin-top: 4vh; */
 
     p {
       margin-left: 8px;
@@ -312,8 +312,9 @@
     display: flex;
     justify-content: center;
     width: 40vw;
+    height: inherit;
     align-items: center;
-/*     margin-bottom: 5px; */
+    /*     margin-bottom: 5px; */
   }
 
   .nav-signup {
@@ -336,7 +337,7 @@
 
   .nav-button {
     margin-right: 0;
-/*     margin-top: 2vh; */
+    /*     margin-top: 2vh; */
     padding: 8px 10px;
     font-size: 1.1rem;
     border: 1.5px solid transparent;
