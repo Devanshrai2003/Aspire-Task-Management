@@ -1,4 +1,4 @@
-const addToDoBtn = document.querySelector(".add-todo");
+const addToDoBtns = document.querySelectorAll(".add-todo");
 const logOutBtn = document.querySelector("#logout");
 const taskSubmitBtn = document.querySelector(".task-submit-button");
 const taskCancelBtn = document.querySelector(".task-cancel-button");
@@ -39,9 +39,11 @@ logOutBtn.addEventListener("click", async function () {
   window.location.href = "/homepage.html";
 });
 
-addToDoBtn.addEventListener("click", function () {
-  const overlay = document.querySelector(".overlay-container");
-  overlay.classList.toggle("show");
+addToDoBtns.forEach((button) => {
+  button.addEventListener("click", function () {
+    const overlay = document.querySelector(".overlay-container");
+    overlay.classList.toggle("show");
+  });
 });
 
 taskCancelBtn.addEventListener("click", function () {
